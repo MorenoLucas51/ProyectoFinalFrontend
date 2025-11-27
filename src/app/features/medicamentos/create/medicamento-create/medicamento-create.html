@@ -1,0 +1,29 @@
+<h3>Crear Medicamento</h3>
+
+<div class="mb-3">
+  <label class="form-label">Nombre Comercial</label>
+  <input class="form-control" [(ngModel)]="data.nombreComercial" name="nombre">
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Precio</label>
+  <input class="form-control" type="number" [(ngModel)]="data.precio" name="precio">
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Laboratorio</label>
+  <select class="form-select" [(ngModel)]="data.laboratorioId" name="lab">
+    <option [ngValue]="0">-- Elegir --</option>
+    <option *ngFor="let l of laboratorios" [ngValue]="l.id">{{ l.nombre }}</option>
+  </select>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Activos</label>
+  <div *ngFor="let a of activos" class="form-check">
+    <input class="form-check-input" type="checkbox" [value]="a.id" (change)="toggleActivo(a.id, $event)">
+    <label class="form-check-label">{{ a.nombre }}</label>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="guardar()">Guardar</button>

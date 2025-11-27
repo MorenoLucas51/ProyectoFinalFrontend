@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Medicamentos</h2>
+  <div>
+    <a routerLink="/medicamentos/crear" class="btn btn-primary">Crear</a>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Laboratorio</th>
+      <th>Precio</th>
+      <th>Activos</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of medicamentos">
+      <td>{{ m.nombreComercial }}</td>
+      <td>{{ m.laboratorio?.nombre }}</td>
+      <td>{{ m.precio | currency:'ARS' }}</td>
+      <td>{{ nombreActivos(m) }}</td>
+      <td>
+        <a [routerLink]="['/medicamentos/editar', m.id]" class="btn btn-sm btn-warning me-1">Editar</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
